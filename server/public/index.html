@@ -12,7 +12,32 @@
 
     <title>To Do List</title>
 </head>
+<header>to do list</header>
 <body>
-    
+<main>
+    <section id="addTask"></section>
+    <label for="toDoItem">
+        <input id="toDoItem" type="text" placeholder="Make to do list...">
+    </label>
+        <button type="button" id="submitTask">add</button>
+
+<table id= "toDoTable"></table>
+<section>
+    <h2>TO DO:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="viewTasks">
+      </tbody>
+    </table>
+  </section>
+
+</main>
 </body>
 </html>
