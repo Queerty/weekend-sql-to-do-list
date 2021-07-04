@@ -3,11 +3,11 @@ $( document ).ready( function(){
     console.log( 'JQ' );
     // Establish Click Listeners
     setupClickListeners()
-
+    //load tasks from database
     getTasks();
     clearInput();
     //status listener
-    $('table').on('click', '#status', changeStatusHandler);
+    $('table').on('click', '#checkbox', changeStatusHandler);
     //delete listener
     $('#viewTasks').on('click', 'button#deleteButton', deleteTaskHandler);
 
@@ -17,10 +17,10 @@ function setupClickListeners(){
     $( '#submitTask' ).on('click', function(){
         console.log( 'in submitTask on click');
         //validate inputs
-        // if(!$('toDoItem').val()){
-        //     console.log('add all inputs');
-        //     return;
-        // }
+        if(!$('#toDoItem').val()){
+        console.log('add all inputs');
+          return;
+        }
 
         let taskToSend = {
             task: $('#toDoItem').val()
@@ -51,11 +51,9 @@ function clearInput(){
 
 
 function getTasks(){
-    console.log('in getTasks');//ajax call to server to get tasks
-//     "id" serial PRIMARY KEY,
-// "task" varchar(240),
-// "priority" varchar(10),
-// "status" varchar(10)
+    console.log('in getTasks');
+    //ajax call to server to get tasks
+    //clear table before each display
 $('#viewTasks').empty();
 
 $.ajax({
@@ -75,22 +73,30 @@ function renderTaskInfo(response){
     for (let i=0; i<response.length; i++){
         if(response[i].status == 'Done'){
             $('#viewTasks').append(`
-            <tr id="done">
-                <td>${response[i].task}</td>
+            <tr>
+                <td id="check" style="font-size:32px">✓</td>
+                <td id="done">${response[i].task}</td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td><button id="deleteButton" data-id="${response[i].id}" data-task="${response[i].task}">delete</button></td>
+                <td>
+                <button id="deleteButton" data-id="${response[i].id}" 
+                data-task="${response[i].task}">delete
+                </button></td>
 
             </tr>`)
         }else {
          $('#viewTasks').append(`
         <tr id="incomplete">
+            <td id="check">
+            <input type="checkbox" id="checkbox" data-id="${response[i].id}"> 
+            </td>
             <td>${response[i].task}</td>
             <td></td>
-            <td><button id="status" data-id="${response[i].id}"> done </button>
             <td></td>
-            <td><button id="deleteButton" data-id="${response[i].id}" data-task="${response[i].task}">delete</button></td>
+            <td>
+            <button id="deleteButton" data-id="${response[i].id}" data-task="${response[i].task}">
+            delete
+            </button></td>
         //     </tr>`)
     }
 }

@@ -1,19 +1,15 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000;
-const todoRouter = require('./routes/todo.router')
+const todoRouter = require("./routes/todo.router");
 
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('server/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("server/public"));
 
 //ROUTES GO HERE app.use(/route, routerName)
-app.use('/tasks', todoRouter)
+app.use("/tasks", todoRouter);
 // Start listening for requests on a specific port
 app.listen(PORT, () => {
-    console.log('listening on port', PORT);
-  });
-
-
-
+  console.log("listening on port", PORT);
+});
