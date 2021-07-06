@@ -1,9 +1,10 @@
 # Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+The Weekend To Do List
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This application allows an easy way to keep track of the day's to-do list. 
+It still provides the satisfaction of "crossing things off" your to-do list when the 
+task is "done".
+If you decide to remove a task, simply click the "delete" eraser next to the task.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
